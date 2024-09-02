@@ -29,7 +29,7 @@ steps:
       - 'deploy'
       - 'your-react-app'
       - '--image'
-      - 'gcr.io/<YOUR_PROJECT_ID>/your-react-app'
+      - 'gcr.io/ecommerce-434317/gabogt4-React_E-Commerce'
       - '--platform'
       - 'managed'
       # Optional: Set a region for your Cloud Run service
