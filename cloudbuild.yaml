@@ -16,12 +16,16 @@ steps:
     # COPY . .
     # RUN npm run build
     # CMD ["npm", "start"]
+    options:
+      logging: CLOUD_LOGGING_ONLY
 
   # 2. Push the built image to Container Registry
   - name: 'gcr.io/cloudbuild/docker'
     args:
       - 'push'
       - 'gcr.io/ecommerce-434317/gabogt4-React_E-Commerce'
+    options:
+      logging: CLOUD_LOGGING_ONLY
 
   # 3. Deploy to Cloud Run (optional)
   - name: 'gcr.io/cloudbuild/cloudrun'
@@ -32,6 +36,8 @@ steps:
       - 'gcr.io/ecommerce-434317/gabogt4-React_E-Commerce'
       - '--platform'
       - 'managed'
+    options:
+      logging: CLOUD_LOGGING_ONLY
       # Optional: Set a region for your Cloud Run service
       # --region=us-central1
       # Optional: Set a custom domain for your Cloud Run service
