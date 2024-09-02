@@ -40,3 +40,5 @@ steps:
       # --path=your-custom-path
 options:
   logging: CLOUD_LOGGING_ONLY
+# Especifica la cuenta de servicio
+serviceAccount: 409301512761@cloudbuild.gserviceaccount.com
