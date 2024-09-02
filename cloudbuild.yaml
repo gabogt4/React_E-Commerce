@@ -21,7 +21,7 @@ steps:
   - name: 'gcr.io/cloudbuild/docker'
     args:
       - 'push'
-      - 'gcr.io/<YOUR_PROJECT_ID>/your-react-app'
+      - 'gcr.io/ecommerce-434317/gabogt4-React_E-Commerce'
 
   # 3. Deploy to Cloud Run (optional)
   - name: 'gcr.io/cloudbuild/cloudrun'
