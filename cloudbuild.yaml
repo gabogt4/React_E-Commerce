@@ -36,9 +36,9 @@ steps:
         apt-get update
         apt-get install jq -y
         #obtener el qualitygate usando el API
-        responce =$(curl -s -u 2021fdd9704fb6d5378fcf9e817a873ee027bc46: https://sonarcloud.io/api/qualitygates/project_status?projectKey=gt0593sonarcloud_basic-nodejs-app) 
+        responce=$(curl -s -u 2021fdd9704fb6d5378fcf9e817a873ee027bc46: https://sonarcloud.io/api/qualitygates/project_status?projectKey=gt0593sonarcloud_basic-nodejs-app) 
         echo "$(curl -s -u 2021fdd9704fb6d5378fcf9e817a873ee027bc46: https://sonarcloud.io/api/qualitygates/project_status?projectKey=gt0593sonarcloud_basic-nodejs-app"
-        status =$(echo $response | jq -r '.projectStatus.status')
+        status=$(echo $response | jq -r '.projectStatus.status')
         echo "Chequeo de SonarCLoud = $status"
         if ["$status" == "ERROR"]
         then
