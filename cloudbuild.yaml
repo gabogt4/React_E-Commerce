@@ -12,7 +12,9 @@ steps:
         mkdir /workspace/.scannerwork
         chown 1000:1000 /workspace/.scannerwork
         chmod -R 754 /workspace/.scannerwork
-
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args: ['-c', 'ls -la /workspace']
   
 options:
   logging: CLOUD_LOGGING_ONLY
