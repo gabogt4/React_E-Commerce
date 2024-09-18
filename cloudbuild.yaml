@@ -1,44 +1,19 @@
 steps:
-  # 1. Build the React application
-  - name: 'gcr.io/cloudbuild/docker'
-    args:
-      - 'build'
-      - '-t'
-      - 'gcr.io/ecommerce-434317/gabogt4-React_E-Commerce'
-      - '.'
-    # Use a Dockerfile in your repository's root directory
-    # This Dockerfile should build your React app and create a production-ready image
-    # Example Dockerfile:
-    # FROM node:16-alpine
-    # WORKDIR /app
-    # COPY package*.json ./
-    # RUN npm install
-    # COPY . .
-    # RUN npm run build
-    # CMD ["npm", "start"]
+  - name: node
+    entrypoint: npm
+    args: ['install']
 
-  # 2. Push the built image to Container Registry
-  - name: 'gcr.io/cloudbuild/docker'
+    #Preparar entorno para sonar-scanner
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
     args:
-      - 'push'
-      - 'gcr.io/ecommerce-434317/gabogt4-React_E-Commerce'
+      - '-c'
+      - |
+        mkdir /workspace/.scannerwork
+        chown 1000:1000 /workspace/.scannerwork
+        chmod -R 754 /workspace/.scannerwork
 
-  # 3. Deploy to Cloud Run (optional)
-  - name: 'gcr.io/cloudbuild/cloudrun'
-    args:
-      - 'deploy'
-      - 'your-react-app'
-      - '--image'
-      - 'gcr.io/ecommerce-434317/gabogt4-React_E-Commerce'
-      - '--platform'
-      - 'managed'
-      # Optional: Set a region for your Cloud Run service
-      # --region=us-central1
-      # Optional: Set a custom domain for your Cloud Run service
-      # --domain=your-custom-domain.com
-      # Optional: Set a custom URL path for your Cloud Run service
-      # --path=your-custom-path
+  
 options:
   logging: CLOUD_LOGGING_ONLY
-# Especifica la cuenta de servicio
-serviceAccount: 409301512761@cloudbuild.gserviceaccount.com
+
