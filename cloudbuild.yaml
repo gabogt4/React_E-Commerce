@@ -44,7 +44,7 @@ steps:
           echo "Quality Gate Failed"
           exit 1
         fi
-        if [ "$status" = "Ok" ]; then
+        if [ "$status" = "OK" ]; then
           echo "Quality Gate Passed"
         else
           echo "Quality Gate unknow"
