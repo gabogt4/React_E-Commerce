@@ -12,10 +12,35 @@ steps:
         mkdir /workspace/.scannerwork
         chown 1000:1000 /workspace/.scannerwork
         chmod -R 754 /workspace/.scannerwork
-  - name: 'ubuntu'
+  #- name: 'ubuntu'
+  #  entrypoint: 'bash'
+  #  args: ['-c', 'ls -la /workspace']
+  - name: 'us-central1-docker.pkg.dev/ecommerce-434317/sonar-scanner/sonar-scanner:5'
+    entrypoint: 'sonar-scanner'
+    args:
+#      - '-X' #debug
+      - '-Dsonar.host.url=https://sonarcloud.io'
+      - '-Dsonar.projectKey=gt0593sonarcloud_ecommerce'
+      - '-Dsonar.organization=gt0593sonarcloud'
+      - '-Dsonar.exclusions=Dockerfile,**/*.html,**/*.json,tests/**,**/*.yaml'
+      - '-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info'
+      - '-Dsonar.sources=.'
+    env:
+      - SONAR_TOKEN=2021fdd9704fb6d5378fcf9e817a873ee027bc46
+
+  - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
-    args: ['-c', 'ls -la /workspace']
-  
+    args:
+      - '-c'
+      - |
+        apt-get update
+        apt-get install jq -y
+        #obtener el qualitygate usando el API
+        responce =$(curl-s -u 2021fdd9704fb6d5378fcf9e817a873ee027bc46: https://sonarcloud.io/api/qualitygates/project_status?projectKey=gt0593sonarcloud_basic-nodejs-app) 
+        echo "$(curl-s -u 2021fdd9704fb6d5378fcf9e817a873ee027bc46: https://sonarcloud.io/api/qualitygates/project_status?projectKey=gt0593sonarcloud_basic-nodejs-app"
+        status =$(echo $response | jq -r '.projectStatus.status')
+        echo "Chequeo de SonarCLoud = $status"
+        
 options:
   logging: CLOUD_LOGGING_ONLY
 
