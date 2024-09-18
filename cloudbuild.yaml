@@ -40,13 +40,11 @@ steps:
         #echo "$(curl -s -u 2021fdd9704fb6d5378fcf9e817a873ee027bc46: https://sonarcloud.io/api/qualitygates/project_status?projectKey=gt0593sonarcloud_basic-nodejs-app)"
         status=$(echo $response | jq -r '.projectStatus.status')
         echo "Chequeo de SonarCLoud = $status"
-        if ["$status" == "ERROR"]
-        then
+        if [ "$status" = "ERROR" ]; then
           echo "Quality Gate Failed"
           exit 1
         fi
-        if ["$status" == "Ok"]
-        then
+        if [ "$status" = "Ok" ]; then
           echo "Quality Gate Passed"
         else
           echo "Quality Gate unknow"
