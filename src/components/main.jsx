@@ -13,8 +13,8 @@ const Home = () => {
           />
           <div className="card-img-overlay d-flex align-items-center">
             <div className="container">
-              <h1 className="card-title fs-1 text fw-lighter" style="{color:black}">Mi comisariato</h1>
-              <h2 className="card-text fs-5 d-none d-sm-block " style="{color:black}">
+              <h1 >Mi comisariato</h1>
+              <h2 >
                 Siempre de todo a menor precio, SIEMPRE!.
               </h2>
             </div>
