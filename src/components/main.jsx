@@ -13,10 +13,10 @@ const Home = () => {
           />
           <div className="card-img-overlay d-flex align-items-center">
             <div className="container">
-              <h5 className="card-title fs-1 text fw-lighter">New Season Arrivals</h5>
-              <p className="card-text fs-5 d-none d-sm-block ">
+              <h1 className="card-title fs-1 text fw-lighter" style="color:black">Mi comisariato</h1>
+              <h2 className="card-text fs-5 d-none d-sm-block " style="color:black">
                 Siempre de todo a menor precio, SIEMPRE!.
-              </p>
+              </h2>
             </div>
           </div>
         </div>
