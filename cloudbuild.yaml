@@ -2,7 +2,7 @@ steps:
   - name: node
     entrypoint: npm
     args: ['install']
-
+#remediación
     #Preparar entorno para sonar-scanner
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
